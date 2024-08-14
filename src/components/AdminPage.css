@@ -1,0 +1,16 @@
+.admin-page-container {
+    padding: 20px;
+    text-align: center; 
+  }
+  
+  .admin-page-container h1 {
+    font-size: 2.5rem; 
+    color: #333; 
+    margin-bottom: 10px;
+  }
+  
+  .admin-page-container p {
+    font-size: 1.2rem;
+    color: #666; 
+  }
+  
