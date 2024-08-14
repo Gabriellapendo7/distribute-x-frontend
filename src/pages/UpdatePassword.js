@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function UpdatePassword() {
-    const history = useHistory();
+    const navigate = useNavigate(); // Updated from useHistory
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
 
@@ -41,7 +41,7 @@ export default function UpdatePassword() {
             }
 
             setSuccess("Password updated successfully");
-            setTimeout(() => history.push("/"), 1000);
+            setTimeout(() => navigate("/"), 1000); // Updated from history.push
         } catch (error) {
             console.error("Error during password update:", error);
             setError(error.message);

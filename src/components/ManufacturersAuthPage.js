@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
-export default function ManufacturersPage() {
-    const history = useHistory();
+export default function ManufacturersAuthPage() {
+    const navigate = useNavigate();
     const [signupSuccess, setSignupSuccess] = useState("");
     const [signupError, setSignupError] = useState("");
 
@@ -41,7 +41,7 @@ export default function ManufacturersPage() {
             }
 
             setSignupSuccess("Sign up successful!");
-            setTimeout(() => history.push("/"), 1000);
+            setTimeout(() => navigate("/manufacturer/page"), 1000);
         } catch (error) {
             console.error("Error during signup:", error);
             setSignupError(error.message);
@@ -71,7 +71,7 @@ export default function ManufacturersPage() {
                         <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
                             Already have an account?{" "}
                             <Link
-                                to="/login" // Change this to the correct login route
+                                to="/login"
                                 className="text-blue-600 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                             >
                                 Sign in here

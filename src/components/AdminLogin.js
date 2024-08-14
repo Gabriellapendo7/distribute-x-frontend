@@ -1,12 +1,10 @@
-// THE HANDLING OF THE BACKEND REQUEST IS BEING SHARED BY THIS PAGE, ADMINLOGIN AND THE LOGIN PAGE.
-
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function AdminLogin() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [loginError, setLoginError] = useState("");
     const [loginSuccess, setLoginSuccess] = useState("");
 
@@ -35,7 +33,7 @@ export default function AdminLogin() {
             }
 
             setLoginSuccess("Login successful!");
-            setTimeout(() => history.push("/admin"), 1000); 
+            setTimeout(() => navigate("/admin"), 1000); 
         } catch (error) {
             console.error("Error during login:", error);
             setErrors({ server: error.message });

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import NavbarMenu from "./components/NavbarMenu";
@@ -14,27 +14,29 @@ import UpdatePassword from "./pages/UpdatePassword";
 import Contact from "./pages/Contact";
 import AdminLogin from "./components/AdminLogin";
 import AdminPage from "./components/AdminPage";
-import ManufacturersPage from "./components/ManufacturersPage";
+import ManufacturersAuthPage from "./components/ManufacturersAuthPage";
+import ManufacturerPage from "./components/ManufacturerPage";
 
 function App() {
     return (
         <CartWrapper>
             <Router>
                 <NavbarMenu />
-                <Switch>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about" component={About} />
-                    <Route path="/checkout" component={Checkout} />
-                    <Route path="/login" component={Login} />
-                    <Route path="/admin-login" component={AdminLogin} />
-                    <Route path="/admin" component={AdminPage} />
-                    <Route path="/signup" component={Signup} />
-                    <Route path="/manufacturers" component={ManufacturersPage} />
-                    <Route path="/deleteuser" component={DeleteUser} />
-                    <Route path="/UpdatePassword" component={UpdatePassword} />
-                    <Route path="/viewproduct/:id" component={ViewProduct} />
-                    <Route path="/contact" component={Contact} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/about" element={<About />} />
+                    <Route path="/checkout" element={<Checkout />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/admin-login" element={<AdminLogin />} />
+                    <Route path="/admin" element={<AdminPage />} />
+                    <Route path="/signup" element={<Signup />} />
+                    <Route path="/manufacturers" element={<ManufacturersAuthPage />} />
+                    <Route path="/deleteuser" element={<DeleteUser />} />
+                    <Route path="/manufacturer/page" element={<ManufacturerPage />} />
+                    <Route path="/updatePassword" element={<UpdatePassword />} />
+                    <Route path="/viewproduct/:id" element={<ViewProduct />} />
+                    <Route path="/contact" element={<Contact />} />
+                </Routes>
                 <Footer />
             </Router>
         </CartWrapper>

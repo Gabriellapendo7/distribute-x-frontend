@@ -1,10 +1,11 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Login() {
-    const history = useHistory();
+    const navigate = useNavigate(); // Updated from useHistory
+
     const [loginError, setLoginError] = useState("");
     const [loginSuccess, setLoginSuccess] = useState("");
 
@@ -34,7 +35,7 @@ export default function Login() {
             }
 
             setLoginSuccess("Login successful!");
-            setTimeout(() => history.push("/"), 1000);
+            setTimeout(() => navigate("/"), 1000); // Updated from history.push
         } catch (error) {
             console.error("Error during login:", error);
             setErrors({ server: error.message });
@@ -50,12 +51,12 @@ export default function Login() {
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                     <span className="block sm:inline">{loginError}</span>
                 </div>
-            )}{" "}
+            )}
             {loginSuccess && (
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
                     <span className="block sm:inline">{loginSuccess}</span>
                 </div>
-            )}{" "}
+            )}
             <div className="mt-7 bg-white border border-gray-200 rounded-xl shadow-sm dark:bg-gray-800 dark:border-gray-700">
                 <div className="p-4 sm:p-7">
                     <div className="text-center">
@@ -112,14 +113,14 @@ export default function Login() {
                                     Login
                                 </button>
                                 <p className="mt-2 text-sm text-gray-600 dark:text-gray-400">
-                            Forgot Password?{" "}
-                            <Link
-                                to="/login"
-                                className="text-blue-600 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                            >
-                                Click here to receive a reset password to your email
-                            </Link>
-                        </p>
+                                    Forgot Password?{" "}
+                                    <Link
+                                        to="/login"
+                                        className="text-blue-600 hover:underline font-medium dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                    >
+                                        Click here to receive a reset password to your email
+                                    </Link>
+                                </p>
                             </Form>
                         )}
                     </Formik>

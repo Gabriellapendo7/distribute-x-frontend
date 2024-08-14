@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { useHistory, Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function DeleteUser() {
-    const history = useHistory();
+    const navigate = useNavigate(); // Updated from useHistory
 
     const initialValues = {
         username: "",
@@ -35,7 +35,7 @@ export default function DeleteUser() {
             }
 
             setSuccess("Account deleted successfully");
-            setTimeout(() => history.push("/"), 1000);
+            setTimeout(() => navigate("/"), 1000); // Updated from history.push
         } catch (error) {
             console.error("Error during account deletion:", error);
             setError(error.message);

@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function Signup() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const [signupSuccess, setSignupSuccess] = useState("");
     const [signupError, setSignupError] = useState("");
+
     const initialValues = {
         email: "",
         username: "",
@@ -46,7 +47,7 @@ export default function Signup() {
             }
 
             setSignupSuccess("Sign up successful!");
-            setTimeout(() => history.push("/"), 1000);
+            setTimeout(() => navigate("/"), 1000);
         } catch (error) {
             console.error("Error during signup:", error);
             setSignupError(error.message);
@@ -61,7 +62,7 @@ export default function Signup() {
                 <div className="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative mb-4">
                     <span className="block sm:inline">{signupSuccess}</span>
                 </div>
-            )}{" "}
+            )}
             {signupError && (
                 <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4">
                     <span className="block sm:inline">{signupError}</span>
